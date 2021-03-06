@@ -1,21 +1,32 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import * as Permissions from 'expo-permissions';
+import * as Notifications from 'expo-notifications';
+import { Alert, Text } from 'react-native';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+Notifications.setNotificationHandler({
+  handleNotification: async () => ({
+    shouldShowAlert: true,
+    shouldPlaySound: true,
+    shouldSetBadge: true,
+  }),
+});
+
+Permissions.getAsync(Permissions.USER_FACING_NOTIFICATIONS)
+  .then(permission => {
+    Alert.alert(JSON.stringify(permission));
+    Notifications.scheduleNotificationAsync({
+      content: {
+          title: 'Hello',
+          subtitle: 'world',
+      },
+      trigger: {
+          seconds: 10,
+      }
+    });
+  })
+
+export const App = () => {
+  return <Text>Hello World</Text>
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;

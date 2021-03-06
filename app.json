@@ -2,7 +2,7 @@
   "expo": {
     "name": "expo-notifications",
     "slug": "expo-notifications",
-    "version": "1.0.0",
+    "version": "0.1.6",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
@@ -17,7 +17,9 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "ch.yolp.tests.expo.notifications",
+      "buildNumber": "2"
     },
     "android": {
       "adaptiveIcon": {
