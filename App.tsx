@@ -26,7 +26,7 @@ Permissions.getAsync(Permissions.USER_FACING_NOTIFICATIONS)
   })
 
 export const App = () => {
-  return <Text>Hello World</Text>
+  return <Text style={{justifyContent: 'center', alignItems: 'center'}}>Hello World</Text>
 }
 
 export default App;
